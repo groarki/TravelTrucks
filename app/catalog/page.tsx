@@ -1,9 +1,15 @@
+import CampersList from '@/components/CampersList/CampersList';
 import SideComponents from '@/components/SideComponents/SideComponents';
+import { getCampers } from '@/lib/services/camperService';
 
-const Campers = () => {
+const Campers = async() => {
+
+  const campers = await getCampers();
+
   return (
     <div className="container">
-      <SideComponents/>
+      <SideComponents />
+      <CampersList items={campers.items}/>
     </div>
   );
 }
