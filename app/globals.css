@@ -1,0 +1,117 @@
+:root {
+  --font-family: var(--font-inter-sans);
+
+  --main: #101828;
+  --text: #475467;
+  --gray: #6c717b;
+  --gray-light: #dadde1;
+  --button: #e44848;
+  --button-hover: #d84343;
+  --rating: #ffc531;
+  --inputs: #f7f7f7;
+  --badges: #f2f4f7;
+  --white: #fff;
+}
+
+html,
+body {
+  max-width: 100vw;
+  /* overflow: hidden; */
+}
+
+body {
+  font-family: var(--font-inter-sans);
+  color: var(--main);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  padding: 48px 64px 52px 64px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67%;
+  letter-spacing: -0.01em;
+  color: var(--inputs);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--inputs);
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+}
+
+p {
+  line-height: 150%;
+  font-size: 16px;
+}
+
+.p-main {
+  font-weight: 400;
+  color: var(--main);
+}
+
+.p-main-bold {
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 16px;
+  color: var(--main);
+}
+
+.p-text {
+  font-weight: 400;
+  color: var(--text);
+}
+
+.p-gray {
+  font-weight: 400;
+  color: var(--gray);
+}
+
+.p-white {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+.btn {
+  border-radius: 200px;
+  width: 166px;
+  height: 56px;
+  background: var(--button);
+  border: none;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-size: 16px;
+  color: var(--white);
+  transition: background 0.2s ease, transform 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--button-hover);
+  transform: scale(1.02);
+}

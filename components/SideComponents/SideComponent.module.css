@@ -1,0 +1,91 @@
+.sideContainer {
+  width: 360px;
+}
+
+.inputContainer {
+  margin-top: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper {
+  margin-bottom: 40px;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  fill: #475467;
+}
+
+.input {
+  border: none;
+  border-radius: 12px;
+  padding: 18px 48px;
+  width: 360px;
+  height: 56px;
+  background: var(--inputs);
+}
+
+.input:focus {
+  border: 1px solid var(--gray-light);
+  outline: none;
+}
+
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.equipment {
+  border-top: 1px solid var(--gray-light);
+  padding-top: 24px;
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 112px;
+  height: 96px;
+}
+
+.typeWrapper {
+  margin-bottom: 40px;
+}
+
+.vanTypes {
+  border-top: 1px solid var(--gray-light);
+  padding-top: 24px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 8px;
+  width: 112px;
+  height: 96px;
+}

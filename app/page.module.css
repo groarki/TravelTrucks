@@ -1,0 +1,25 @@
+.homeCont {
+  background-color: rgb(0, 0, 0, 0.2);
+  background-image: url("/home.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  padding: 260px 64px;
+}
+
+.titleCont {
+  width: 571px;
+}
+
+.textCont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.homeBtn {
+  width: 173px;
+}
