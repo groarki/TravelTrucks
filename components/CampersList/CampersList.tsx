@@ -115,9 +115,8 @@ const CampersList = ({ items }: CampersProps) => {
                 <p className='p-text p-shorted'>{item.description}</p>
                 <div className={css.category}>
                   {categoryOrder.map((key) => (
-                    
                     <div className={css.categoryItem} key={key}>
-                      <svg height={20} width={20} className={css.icon}>
+                      <svg height={20} width={20} className={ ["microwave", "water", "gas"].includes(key) ? css.iconUnfilled : css.icon}>
                         <use href={categoryMap[key].icon}></use>
                       </svg>
                       <p className="p-main">{categoryMap[key].value(item[key])}</p>

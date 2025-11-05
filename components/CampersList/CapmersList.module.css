@@ -74,10 +74,16 @@
   background: var(--badges);
 }
 
-/* .icon {
+.icon {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.iconUnfilled {
   display: inline-block;
   stroke-width: 0;
   stroke: currentColor;
   fill: none;
-  fill: currentColor;
-} */
+}
