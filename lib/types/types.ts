@@ -31,3 +31,5 @@ export interface Reviews {
     reviewer_rating: number,
     comment: string,
 };
+
+export type Categories = keyof Pick<Camper, "AC" | "TV" | "bathroom" | "engine" | "gas" | "kitchen" | "microwave" | "radio" | "refrigerator" | "transmission" | "water">
