@@ -1,10 +1,12 @@
-import css from "./CapmersList.module.css"
-import { Camper, Categories } from '@/lib/types/types'
-import Image from 'next/image'
+"use client"
 
-interface CampersProps {
-  items: Camper[],
-}
+import { getCampers } from "@/lib/services/camperService"
+import css from "./CapmersList.module.css"
+import { Categories } from '@/lib/types/types'
+import { keepPreviousData, useQuery } from "@tanstack/react-query"
+import Image from 'next/image'
+import { useEffect, useRef, useState } from "react"
+
 
 type CategoryMapType = Record<Categories, {
   icon: string
@@ -70,12 +72,34 @@ const categoryOrder:Categories[] = ["transmission",
   "gas",
   "water"];
       
-const CampersList = ({ items }: CampersProps) => {
-  
+const CampersList = () => {
+  const [page, SetPage] = useState(1);
+  const topRef = useRef<HTMLDivElement>(null);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["campers", page],
+    queryFn: () => getCampers(page),
+    placeholderData: keepPreviousData, 
+  });
+
+  useEffect(() => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [page]);
+
+  const handleLoadMore = () => {
+    SetPage(page + 1);
+  }
+
+  const campers = data?.items;
+
+  const totalPages = Math.ceil((data?.total ?? 0) / 4);
+
   return (
-    <div className={css.listWrapper}>
+    <div ref={topRef} className={css.listWrapper}>
       <ul className={css.camperList}>
-        {items && items.map((item) => {
+        {campers && campers.map((item) => {
           return (
             <li key={item.id} className={css.card}>
               <div className={css.imageWrapper}>
@@ -129,6 +153,7 @@ const CampersList = ({ items }: CampersProps) => {
           )
         })}
       </ul>
+      {!isLoading && page < totalPages && <button onClick={handleLoadMore} className="btn-loadmore" disabled={isLoading}>Load More</button>}
     </div>
   )
 }

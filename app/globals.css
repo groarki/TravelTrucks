@@ -127,10 +127,29 @@ p {
   font-size: 16px;
   color: var(--white);
   transition: background 0.2s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
 .btn:hover,
 .btn:focus {
   background: var(--button-hover);
+  transform: scale(1.02);
+}
+
+.btn-loadmore {
+  display: block;
+  margin: 40px auto;
+  font-size: 16px;
+  background: none;
+  border: 1px solid var(--gray-light);
+  border-radius: 200px;
+  width: 145px;
+  height: 56px;
+  transition: border-color 0.2s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+.btn-loadmore:hover,
+.btn-loadmore:focus {
+  border-color: var(--button-hover);
   transform: scale(1.02);
 }

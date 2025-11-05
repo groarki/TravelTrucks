@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import ReactClientProvider from "@/lib/services/ReactClientProvider";
 
 const InterSans = Inter({
   variable: "--font-inter-sans",
@@ -22,12 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${InterSans.variable}`}>
-      <Header/>
-        <main>
-          {children}
-        </main>
-      </body>
+      <ReactClientProvider>
+        <body className={`${InterSans.variable}`}>
+          <Header/>
+            <main>
+              {children}
+            </main>
+        </body>
+      </ReactClientProvider>
     </html>
   );
-}
+};
