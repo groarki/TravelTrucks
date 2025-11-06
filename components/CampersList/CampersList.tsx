@@ -1,19 +1,22 @@
 "use client"
 
-import { getCampers } from "@/lib/services/camperService"
 import css from "./CapmersList.module.css"
 import { Categories } from '@/lib/types/types'
-import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import Image from 'next/image'
-import { useEffect, useRef, useState } from "react"
+import { useCampersStore } from "../../lib/store/useCampersStore";
+import { fetchCampersResponse } from "@/lib/services/camperService";
 
+interface CamperListProps {
+  data: fetchCampersResponse | undefined,
+  isLoading: boolean,
+}
 
 type CategoryMapType = Record<Categories, {
   icon: string
   value: (type: string | boolean) => string
 }>
 
-  const categoryMap:CategoryMapType = {
+const categoryMap:CategoryMapType = {
     engine: {
       icon: "/sprite.svg#icon-fuel",
       value: (type) => String(type)
@@ -72,32 +75,15 @@ const categoryOrder:Categories[] = ["transmission",
   "gas",
   "water"];
       
-const CampersList = () => {
-  const [page, SetPage] = useState(1);
-  const topRef = useRef<HTMLDivElement>(null);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["campers", page],
-    queryFn: () => getCampers(page),
-    placeholderData: keepPreviousData, 
-  });
-
-  useEffect(() => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [page]);
-
-  const handleLoadMore = () => {
-    SetPage(page + 1);
-  }
-
+const CampersList = ({data, isLoading}:CamperListProps) => {
+  const { page, nextPage } = useCampersStore();
+  
   const campers = data?.items;
 
   const totalPages = Math.ceil((data?.total ?? 0) / 4);
 
   return (
-    <div ref={topRef} className={css.listWrapper}>
+    <div className={css.listWrapper}>
       <ul className={css.camperList}>
         {campers && campers.map((item) => {
           return (
@@ -153,7 +139,7 @@ const CampersList = () => {
           )
         })}
       </ul>
-      {!isLoading && page < totalPages && <button onClick={handleLoadMore} className="btn-loadmore" disabled={isLoading}>Load More</button>}
+      {!isLoading && page < totalPages && <button onClick={nextPage} className="btn-loadmore">Load More</button>}
     </div>
   )
 }

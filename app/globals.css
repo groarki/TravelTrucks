@@ -110,8 +110,8 @@ p {
   color: var(--white);
 }
 .p-shorted {
-  white-space: nowrap; /* не переносити текст на новий рядок */
-  overflow: hidden; /* приховати все, що виходить за межі контейнера */
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   max-width: 525px;
 }

@@ -62,6 +62,14 @@
   padding: 16px 18px;
   width: 112px;
   height: 96px;
+  cursor: pointer;
+  transition: border-color 0.3s ease-out;
+}
+
+.filters:has(input:checked),
+.types:has(input:checked) {
+  border-color: var(--button-hover);
+  transform: scale(1.02);
 }
 
 .typeWrapper {
@@ -89,4 +97,11 @@
   padding: 8px;
   width: 112px;
   height: 96px;
+  cursor: pointer;
+  transition: border-color 0.3s ease-out;
+}
+
+.hiddenCheck {
+  position: absolute;
+  opacity: 0;
 }
